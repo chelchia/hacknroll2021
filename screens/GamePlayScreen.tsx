@@ -7,32 +7,6 @@ import { Text, View } from "../components/Themed";
 import { GameEngine } from "react-native-game-engine"
 import Svg, { Circle, Rect, ClipPath, Defs, Polygon } from 'react-native-svg';
 
-const Draggable = ({ children, dragObject, onDragStart, onDragEnd }) => {
-  const onDragStarting = (e) => {
-    // Get the block coordinates
-    let currentTargetRect = e.currentTarget.getBoundingClientRect();
-    // Find the offset of the mouse from those coordinates
-    const offset = [
-      e.clientX - currentTargetRect.left,
-      e.clientY - currentTargetRect.top
-    ];
-
-    // Pass the drag data
-    onDragStart({ dragObject, offset });
-  };
-
-  const onDragEnding = (e) => {
-    e.stopPropagation();
-    onDragEnd();
-  };
-
-  return (
-    <View draggable={true} onDragStart={onDragStarting} onDragEnd={onDragEnding}>
-      {children}
-    </View>
-  );
-};
-
 
 function Rectangle(props) {
   const {x, y, height, width, fill} = props;
